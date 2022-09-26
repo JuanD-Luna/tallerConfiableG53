@@ -1,0 +1,52 @@
+﻿@model List<mecanicoModelo>
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Listar</h1>
+
+<div class="card">
+
+    <div class="card-header">
+        Listar Mecanico
+    </div>
+
+    <div class="card-body">
+
+        <a asp-action="Guardar" asp-controller="Mecanico" class="btn btn-success"><i class="bi bi-plus-circle"></i> Nuevo</a>
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Identificacion</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Telefono</th>
+                    <th>Direccion</th>
+                    <th>Nivel de Educacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                        <tr>
+                            <td>@item.identificacion</td>
+                            <td>@item.nombre</td>
+                            <td>@item.apellido</td>
+                            <td>@item.anoNacimiento</td>
+                            <td>@item.telefono</td>
+                            <td>@item.direccion</td>
+                            <td>@item.nivelEducativo</td>
+                            <td>
+                                <a asp-action="Editar" asp-controller="Mecanico" class="btn btn-primary btn-sm" asp-route-idPersona="@item.idPersona">Editar</a>
+                                <a asp-action="Eliminar" asp-controller="Mecanico" class="btn btn-danger btn-sm" asp-route-idPersona="@item.idPersona">Eliminar</a>
+                            </td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
